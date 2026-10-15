@@ -50,7 +50,6 @@ void SystemInterface::runMenu() {
                 cout << "Dang chon bai do xe 1.\n";
             }
             break;
-
         case 2:
             if (!hasLot2) {
                 cout << "Bai do xe 2 chua duoc tao.\n";
@@ -58,7 +57,6 @@ void SystemInterface::runMenu() {
                 cout << "Dang chon bai do xe 2.\n";
             }
             break;
-
         case 3:
             if (!hasLot3) {
                 cout << "Bai do xe 3 chua duoc tao.\n";
@@ -66,7 +64,6 @@ void SystemInterface::runMenu() {
                 cout << "Dang chon bai do xe 3.\n";
             }
             break;
-
         case 0:
             cout << "Ket thuc chuong trinh.\n";
             break;
