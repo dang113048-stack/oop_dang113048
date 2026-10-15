@@ -1,0 +1,75 @@
+class ParkingLot {
+private:
+    int parkID;
+    char size;
+    Vehicle vehicle1, vehicle2, vehicle3;
+    bool hasVehicle1; bool hasVehicle2; bool hasVehicle3;
+public:
+    ParkingLot() {
+        parkID = 0;
+        size = 'S';
+        hasVehicle1 = false;
+        hasVehicle2 = false;
+        hasVehicle3 = false;
+    }
+    ParkingLot(int id, char s) {
+        parkID = id;
+        size = s;
+        hasVehicle1 = false;
+        hasVehicle2 = false;
+        hasVehicle3 = false;
+    }
+    bool addVehicle(const Vehicle& v) {
+        if (!hasVehicle1) {
+            vehicle1 = v;
+            hasVehicle1 = true;
+            return true;
+        }
+        if (size >= 'M' && !hasVehicle2) {
+            vehicle2 = v;
+            hasVehicle2 = true;
+            return true;
+        }
+        if (size == 'L' && !hasVehicle3) {
+            vehicle3 = v;
+            hasVehicle3 = true;
+            return true;
+        }
+
+        return false;
+    }
+    bool removeVehicle(int vID) {
+        if (hasVehicle1 && vehicle1.getVehicleID() == vID) {
+            hasVehicle1 = false;
+            return true;
+        }
+
+        if (hasVehicle2 && vehicle2.getVehicleID() == vID) {
+            hasVehicle2 = false;
+            return true;
+        }
+
+        if (hasVehicle3 && vehicle3.getVehicleID() == vID) {
+            hasVehicle3 = false;
+            return true;
+        }
+
+        return false;
+    }
+    void displayLotInfo() {
+        cout << "\nMa bai do: " << parkID << endl;
+        cout << "Kich thuoc: " << size << endl;
+
+        if (hasVehicle1)
+            vehicle1.display();
+
+        if (hasVehicle2)
+            vehicle2.display();
+
+        if (hasVehicle3)
+            vehicle3.display();
+
+        if (!hasVehicle1 && !hasVehicle2 && !hasVehicle3)
+            cout << "Bai do dang trong.\n";
+    }
+};
