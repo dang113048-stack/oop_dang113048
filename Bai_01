@@ -1,0 +1,82 @@
+#include <iostream>
+#include <string>
+using namespace std;
+lop 1: Vehicle
+class Vehicle {
+private:
+    int vehicleID;
+    string vehicleType;
+    int entryTime;
+    int parkingDuration;
+    double parkingFee;
+    bool isOccupied;
+
+public:
+    Vehicle() {
+        vehicleID = 0;
+        vehicleType = "";
+        entryTime = 0;
+        parkingDuration = 1;
+        parkingFee = 0;
+        isOccupied = false;
+    }
+
+    Vehicle(int id, string type, int time, int duration) {
+        vehicleID = id;
+        vehicleType = type;
+        entryTime = time;
+        parkingDuration = duration;
+        parkingFee = 0;
+        isOccupied = true;
+    }
+
+    int getVehicleID() {
+        return vehicleID;
+    }
+
+    string getVehicleType() {
+        return vehicleType;
+    }
+
+    bool getIsOccupied() {
+        return isOccupied;
+    }
+
+    void setIsOccupied(bool value) {
+        isOccupied = value;
+    }
+
+    void calculateFee() {
+        double rate = 0;
+
+        if (vehicleType == "Car")
+            rate = 6;
+        else if (vehicleType == "Motorcycle")
+            rate = 4;
+        else if (vehicleType == "Bicycle")
+            rate = 2;
+
+        bool peak = (entryTime >= 6 && entryTime < 10)
+                 || (entryTime >= 15 && entryTime < 19);
+
+        int firstHours = parkingDuration < 2
+                       ? parkingDuration : 2;
+
+        parkingFee = firstHours * rate
+                   * (peak ? 1.30 : 0.95);
+
+        if (parkingDuration > 2) {
+            parkingFee += (parkingDuration - 2)
+                        * rate * 0.90;
+        }
+    }
+
+    void display() {
+        cout << "Ma xe: " << vehicleID << endl;
+        cout << "Loai xe: " << vehicleType << endl;
+        cout << "Gio vao: " << entryTime << endl;
+        cout << "Thoi gian do: "
+             << parkingDuration << " gio" << endl;
+        cout << "Phi do xe: " << parkingFee << endl;
+    }
+};
