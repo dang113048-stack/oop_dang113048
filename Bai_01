@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-lop 1: Vehicle
 class Vehicle {
 private:
     int vehicleID;
