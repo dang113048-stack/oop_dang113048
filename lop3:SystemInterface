@@ -1,0 +1,79 @@
+#ifndef SYSTEMINTERFACE_H
+#define SYSTEMINTERFACE_H
+
+#include "ParkingLot.h"
+#include <iostream>
+using namespace std;
+
+class SystemInterface {
+private:
+    ParkingLot parkingLot1;
+    ParkingLot parkingLot2;
+    ParkingLot parkingLot3;
+
+    bool hasLot1;
+    bool hasLot2;
+    bool hasLot3;
+
+public:
+    SystemInterface();
+
+    void runMenu();
+};
+
+#endif#include "SystemInterface.h"
+
+SystemInterface::SystemInterface()
+    : hasLot1(false),
+      hasLot2(false),
+      hasLot3(false) {
+}
+
+void SystemInterface::runMenu() {
+    int choice;
+
+    do {
+        cout << "\n===== QUAN LY BAI DO XE =====\n";
+        cout << "1. Quan ly bai do xe 1\n";
+        cout << "2. Quan ly bai do xe 2\n";
+        cout << "3. Quan ly bai do xe 3\n";
+        cout << "0. Thoat chuong trinh\n";
+        cout << "Nhap lua chon: ";
+
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            if (!hasLot1) {
+                cout << "Bai do xe 1 chua duoc tao.\n";
+            } else {
+                cout << "Dang chon bai do xe 1.\n";
+            }
+            break;
+
+        case 2:
+            if (!hasLot2) {
+                cout << "Bai do xe 2 chua duoc tao.\n";
+            } else {
+                cout << "Dang chon bai do xe 2.\n";
+            }
+            break;
+
+        case 3:
+            if (!hasLot3) {
+                cout << "Bai do xe 3 chua duoc tao.\n";
+            } else {
+                cout << "Dang chon bai do xe 3.\n";
+            }
+            break;
+
+        case 0:
+            cout << "Ket thuc chuong trinh.\n";
+            break;
+
+        default:
+            cout << "Lua chon khong hop le!\n";
+        }
+
+    } while (choice != 0);
+}
